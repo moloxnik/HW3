@@ -16,4 +16,6 @@
     <string name="button_multi" translatable="false">*</string>
     <string name="button_division" translatable="false">/</string>
     <string name="button_reset" translatable="false">C</string>
+    <string name="dark_light_theme">dark/light Theme</string>
+    <string name="settings">Settings</string>
 </resources>

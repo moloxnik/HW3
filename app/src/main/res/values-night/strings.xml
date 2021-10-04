@@ -17,4 +17,5 @@
     <string name="button_division">/</string>
     <string name="button_reset">C</string>
     <string name="dark_light_theme">dark/light Theme</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

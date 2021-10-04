@@ -1,5 +1,6 @@
 package gb.ru.hw3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +17,11 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.buttonSettings).setOnClickListener(v ->{
+            Intent intent = new Intent(this, ThemeSettings.class);
+            startActivity(intent);
+        });
 
         int[] numberIds = new int[] {
                 R.id.zero,
@@ -42,20 +48,14 @@ public class MainActivity extends AppCompatActivity{
 
         calculator = new CalculatorModel();
 
-        View.OnClickListener numberButtonClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.onNumPressed(view.getId());
-                text.setText(calculator.getText());
-            }
+        View.OnClickListener numberButtonClickListener = view -> {
+            calculator.onNumPressed(view.getId());
+            text.setText(calculator.getText());
         };
 
-        View.OnClickListener actionButtonOnclickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.onActionPressed(view.getId());
-                text.setText(calculator.getText());
-            }
+        View.OnClickListener actionButtonOnclickListener = view -> {
+            calculator.onActionPressed(view.getId());
+            text.setText(calculator.getText());
         };
 
         for (int i = 0; i < numberIds.length; i++) {
@@ -66,12 +66,10 @@ public class MainActivity extends AppCompatActivity{
             findViewById(actionsIds[i]).setOnClickListener(actionButtonOnclickListener);
         }
 
-        findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.reset();
-                text.setText(calculator.getText());
-            }
+        findViewById(R.id.reset).setOnClickListener(view -> {
+            calculator.reset();
+            text.setText(calculator.getText());
         });
     }
+
 }
